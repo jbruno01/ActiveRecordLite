@@ -1,5 +1,6 @@
 require_relative '02_searchable'
 require 'active_support/inflector'
+require 'byebug'
 
 # Phase IIIa
 class AssocOptions
@@ -20,7 +21,12 @@ end
 
 class BelongsToOptions < AssocOptions
   def initialize(name, options = {})
-    # ...
+    byebug
+    if options == {}
+      @foreign_key = "#{name}_id".to_sym
+      @primary_id = :id
+      @class_name = "#{name.camelcase}"
+    end
   end
 end
 
