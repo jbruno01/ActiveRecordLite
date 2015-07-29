@@ -7,7 +7,6 @@ module Searchable
     vals = params.map {|key, val| params[key]}
     where_line = where_line.join(" AND ")
 
-    # byebug
     thing = DBConnection.execute(<<-SQL, *vals)
       SELECT
         *
